@@ -58,8 +58,8 @@ class SingleSurahProvider extends ChangeNotifier {
       html += '</div>';
 
       html += '<div class="verseText">';
-      html +=
-          '<div class="arabic">${element.verseHtml.replaceAll(RegExp(r'ٱ'), 'ا').replaceAll(RegExp(r'اْ'), 'ا')}</div>';
+      html += '<div class="arabic">${element.verseHtml}</div>';
+      html += '<div class="pronunciation">${element.pronunciation}</div>';
       html +=
           '<div class="taisirul">${element.meaningBnTaisirul}</div><div class="ahbayan">${element.meaningBnAhbayan}</div><div class="mujibur">${element.meaningBnMujibur}</div><div class="english">${element.meaningEn}</div>';
       html += '</div>';

@@ -13,7 +13,6 @@ import 'package:al_quran/utils/base64_fonts.dart';
 import 'package:al_quran/utils/constants.dart';
 import 'package:al_quran/widgets/loader.dart';
 import 'package:al_quran/widgets/quran/audio_player_box.dart';
-import 'package:al_quran/widgets/quran/js.dart';
 import 'package:al_quran/widgets/quran/mushaf_surah_info.dart';
 import 'package:al_quran/widgets/quran/tajweed_style.dart';
 import 'package:al_quran/widgets/quran/word_info.dart';
@@ -223,8 +222,6 @@ class MushafQuranSurah extends HookWidget {
         $fullSurahHtml
       <script>
 document.addEventListener('DOMContentLoaded', function () {
-  $js
-  
   const words = document.querySelectorAll(".word");
 
   words.forEach((word) => {

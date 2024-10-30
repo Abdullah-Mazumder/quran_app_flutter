@@ -277,6 +277,10 @@ class SingleSubject extends HookWidget {
           .waqph {
             font-family: lateef;
           }
+          .pronunciation {
+            font-size: var(--bangla-font-size);
+            font-family: regularFont;
+          }
           .taisirul, .ahbayan, .mujibur {
             display: none;
           }

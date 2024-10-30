@@ -6,6 +6,7 @@ import 'package:al_quran/state_helper/get_theme.dart';
 import 'package:al_quran/utils/convert_en_to_bn_number.dart';
 import 'package:al_quran/widgets/custom_text.dart';
 import 'package:al_quran/widgets/quran/animated_quran_settings_box.dart';
+import 'package:al_quran/widgets/quran/tajweed_tags.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -62,95 +63,109 @@ class MushafSurahInformation extends StatelessWidget {
                 borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(3),
                     bottomRight: Radius.circular(3))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
               children: [
-                SizedBox(
-                  width: (12 / 100) * screenWidth,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          appInfoProvider.surahWbController!
-                              .evaluateJavascript(source: 'clearBody();');
-                          Navigator.pop(context);
-                        },
-                        icon: FaIcon(
-                          FontAwesomeIcons.arrowLeft,
-                          size: 22,
-                          color: colors.txtColor,
-                        ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      width: (12 / 100) * screenWidth,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              appInfoProvider.surahWbController!
+                                  .evaluateJavascript(source: 'clearBody();');
+                              Navigator.pop(context);
+                            },
+                            icon: FaIcon(
+                              FontAwesomeIcons.arrowLeft,
+                              size: 22,
+                              color: colors.txtColor,
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: (70 / 100) * screenWidth,
-                  child: isLoading == true
-                      ? Container()
-                      : Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Wrap(
-                              direction: Axis.vertical,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              spacing: language == 'en' ? -1 : -4,
+                    ),
+                    SizedBox(
+                      width: (70 / 100) * screenWidth,
+                      child: isLoading == true
+                          ? Container()
+                          : Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Container(
-                                  constraints: BoxConstraints(
-                                      maxWidth: (70 / 100) * screenWidth),
-                                  child: Wrap(
-                                    alignment: WrapAlignment.center,
-                                    spacing: 5,
-                                    children: [
-                                      CustomText(
-                                        text: text1_1,
-                                        additionalStyle: const TextStyle(
-                                          fontFamily: '',
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                Wrap(
+                                  direction: Axis.vertical,
+                                  crossAxisAlignment: WrapCrossAlignment.center,
+                                  spacing: language == 'en' ? -1 : -4,
+                                  children: [
+                                    Container(
+                                      constraints: BoxConstraints(
+                                          maxWidth: (70 / 100) * screenWidth),
+                                      child: Wrap(
+                                        alignment: WrapAlignment.center,
+                                        spacing: 5,
+                                        children: [
+                                          CustomText(
+                                            text: text1_1,
+                                            additionalStyle: const TextStyle(
+                                              fontFamily: '',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          CustomText(
+                                            text: text1_2,
+                                            additionalStyle: const TextStyle(
+                                              fontFamily: '',
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                      CustomText(
-                                        text: text1_2,
-                                        additionalStyle: const TextStyle(
-                                          fontFamily: '',
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                    ),
+                                    CustomText(
+                                      text: txt2,
+                                      additionalStyle: const TextStyle(
+                                        fontFamily: '',
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500,
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                CustomText(
-                                  text: txt2,
-                                  additionalStyle: const TextStyle(
-                                    fontFamily: '',
-                                    fontSize: 13,
-                                    fontWeight: FontWeight.w500,
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
+                    ),
+                    SizedBox(
+                      width: (12 / 100) * screenWidth,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              alQuranInfoProvider.quranSettingsBoxHandler();
+                            },
+                            icon: FaIcon(
+                              FontAwesomeIcons.sliders,
+                              size: 22,
+                              color: colors.txtColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 3,
                 ),
                 SizedBox(
-                  width: (12 / 100) * screenWidth,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          alQuranInfoProvider.quranSettingsBoxHandler();
-                        },
-                        icon: FaIcon(
-                          FontAwesomeIcons.sliders,
-                          size: 22,
-                          color: colors.txtColor,
-                        ),
-                      ),
-                    ],
-                  ),
+                  width: (90 / 100) * screenWidth,
+                  child: isLoading == true ? Container() : const TajweedTags(),
+                ),
+                const SizedBox(
+                  height: 3,
                 ),
               ],
             ),

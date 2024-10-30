@@ -61,35 +61,35 @@
 // """;
 
 String tajweedStyle = """
-.ghn {
+.tajweed .ghn {
     color: #fb8c00;
 }
 
-.qlq {
+.tajweed .qlq {
     color: #f44336;
 }
 
-.iqlb {
+.tajweed .iqlb {
     color: #b100b1;
 }
 
-.ikhf {
+.tajweed .ikhf {
     color: #0091ea;
 }
 
-.ikhf_shfw {
+.tajweed .ikhf_shfw {
     color: #ffa7b6;
 }
 
-.idghm_shfw {
+.tajweed .idghm_shfw {
     color: #bece75;
 }
 
-.madda_necessary {
+.tajweed .madda_necessary {
     color: #f58900;
 }
 
-.idgh_ghn {
+.tajweed .idgh_ghn {
     color: #419c45;
 }
 """;

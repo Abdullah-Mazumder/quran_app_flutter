@@ -51,6 +51,7 @@ class VerseInfo {
   final int versePosition;
   final String verseHtml;
   final String verseAr;
+  final String pronunciation;
 
   VerseInfo(
       {required this.meaningEn,
@@ -66,7 +67,8 @@ class VerseInfo {
       required this.meaningBnMujibur,
       required this.versePosition,
       required this.verseHtml,
-      required this.verseAr});
+      required this.verseAr,
+      required this.pronunciation});
 
   factory VerseInfo.fromJson(Map<String, dynamic> json) {
     return VerseInfo(
@@ -84,6 +86,7 @@ class VerseInfo {
       versePosition: json['versePosition'],
       verseHtml: json['verseHtml'],
       verseAr: json['verseAr'],
+      pronunciation: json['pronunciation'],
     );
   }
 }
@@ -166,6 +169,7 @@ class VersesWithSurahInfo extends VerseInfo {
     required int versePosition,
     required String verseHtml,
     required String verseAr,
+    required String pronunciation,
     this.surahInfo,
   }) : super(
           meaningEn: meaningEn,
@@ -182,6 +186,7 @@ class VersesWithSurahInfo extends VerseInfo {
           versePosition: versePosition,
           verseHtml: verseHtml,
           verseAr: verseAr,
+          pronunciation: pronunciation,
         );
 
   factory VersesWithSurahInfo.fromJson(Map<String, dynamic> json) {
@@ -208,6 +213,7 @@ class VersesWithSurahInfo extends VerseInfo {
       versePosition: json['versePosition'],
       verseHtml: json['verseHtml'],
       verseAr: json['verseAr'],
+      pronunciation: json['pronunciation'],
       surahInfo: parsedSurahInfo,
     );
   }

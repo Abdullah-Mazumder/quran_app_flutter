@@ -5,6 +5,7 @@ import 'package:al_quran/screenns/quran/favourite_surahlist.dart';
 import 'package:al_quran/screenns/quran/quran_home.dart';
 import 'package:al_quran/screenns/quran/mushaf_quran_list.dart';
 import 'package:al_quran/screenns/quran/subject_wise_quran_list.dart';
+import 'package:al_quran/screenns/quran/tajweed_rule.dart';
 import 'package:al_quran/state_helper/get_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,6 +28,7 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
     const QuranHome(),
     const MushafQuranList(),
     const SubjectWiseQuranList(),
+    const TajweedRule(),
   ];
 
   List<int> tracker = [];
@@ -134,6 +136,22 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
                     FontAwesomeIcons.book,
                     size: 20,
                     color: selectedIndex == 4
+                        ? colors.activeColor1
+                        : colors.txtColor,
+                  ),
+                ),
+              ),
+            ),
+            Material(
+              color: colors.bgColor1,
+              child: InkWell(
+                splashColor: colors.activeColor1.withOpacity(0.2),
+                onTap: () => selectedIndexHandler(5),
+                child: Center(
+                  child: FaIcon(
+                    FontAwesomeIcons.palette,
+                    size: 20,
+                    color: selectedIndex == 5
                         ? colors.activeColor1
                         : colors.txtColor,
                   ),

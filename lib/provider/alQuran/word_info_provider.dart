@@ -15,6 +15,7 @@ class WordInfoProvider extends ChangeNotifier {
     int wordId = int.parse(position.split('_')[2].toString());
 
     final word = await QuranDBHelper.getWordInfo(surahId, verseId, wordId);
+    print(word);
     _wordInfo = WordInfo.fromJson(word);
 
     notifyListeners();

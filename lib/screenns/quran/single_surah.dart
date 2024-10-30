@@ -19,7 +19,6 @@ import 'package:al_quran/utils/html_to_text.dart';
 import 'package:al_quran/utils/show_toast.dart';
 import 'package:al_quran/widgets/loader.dart';
 import 'package:al_quran/widgets/quran/audio_player_box.dart';
-import 'package:al_quran/widgets/quran/js.dart';
 import 'package:al_quran/widgets/quran/single_surah_info.dart';
 import 'package:al_quran/widgets/quran/tajweed_style.dart';
 import 'package:al_quran/widgets/quran/word_info.dart';
@@ -249,6 +248,10 @@ class SingleSurah extends HookWidget {
           .waqph {
             font-family: lateef;
           }
+          .pronunciation {
+            font-size: var(--bangla-font-size);
+            font-family: regularFont;
+          }
           .taisirul, .ahbayan, .mujibur {
             display: none;
           }
@@ -308,8 +311,6 @@ class SingleSurah extends HookWidget {
                 $fullSurahHtml
                 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  $js
-
   let verses = document.querySelectorAll('.singleVerse');
   let words = document.querySelectorAll(".word");
 

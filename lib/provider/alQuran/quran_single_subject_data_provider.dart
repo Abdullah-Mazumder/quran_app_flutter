@@ -98,8 +98,8 @@ class QuranSingleSubjectDataProvider extends ChangeNotifier {
       html += '</div></div>';
 
       html += '<div class="singleVerse verseText" data-id="$i">';
-      html +=
-          '<div class="arabic">${verse.verseHtml.replaceAll(RegExp(r'ٱ'), 'ا').replaceAll(RegExp(r'اْ'), 'ا')}</div>';
+      html += '<div class="arabic">${verse.verseHtml}</div>';
+      html += '<div class="pronunciation">${verse.pronunciation}</div>';
       html +=
           '<div class="taisirul">${verse.meaningBnTaisirul}</div><div class="ahbayan">${verse.meaningBnAhbayan}</div><div class="mujibur">${verse.meaningBnMujibur}</div><div class="english">${verse.meaningEn}</div>';
       html += '</div>';
