@@ -191,15 +191,9 @@ class SingleSubjectInfo extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 3,
-                ),
                 SizedBox(
                   width: (90 / 100) * screenWidth,
                   child: isLoading == true ? Container() : const TajweedTags(),
-                ),
-                const SizedBox(
-                  height: 3,
                 ),
               ],
             ),

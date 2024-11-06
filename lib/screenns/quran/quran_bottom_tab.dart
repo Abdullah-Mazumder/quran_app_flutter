@@ -143,15 +143,15 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
                       ),
                       Column(
                         children: [
-                          // CustomText(
-                          //   text: language == 'bn' ? 'বাংলা' : 'Bangla',
-                          //   additionalStyle: TextStyle(
-                          //     color: selectedIndex == 2
-                          //         ? colors.activeColor1
-                          //         : colors.txtColor,
-                          //     fontSize: 10,
-                          //   ),
-                          // ),
+                          CustomText(
+                            text: language == 'bn' ? 'বাংলা' : 'Bangla',
+                            additionalStyle: TextStyle(
+                              color: selectedIndex == 2
+                                  ? colors.activeColor1
+                                  : colors.txtColor,
+                              fontSize: 10,
+                            ),
+                          ),
                           CustomText(
                             text: language == 'bn' ? 'কোরআন' : 'Quran',
                             additionalStyle: TextStyle(
@@ -186,8 +186,17 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
                       ),
                       Column(
                         children: [
+                          // CustomText(
+                          //   text: language == 'bn' ? 'মুশাফ' : 'Mushaf',
+                          //   additionalStyle: TextStyle(
+                          //     color: selectedIndex == 3
+                          //         ? colors.activeColor1
+                          //         : colors.txtColor,
+                          //     fontSize: 10,
+                          //   ),
+                          // ),
                           CustomText(
-                            text: language == 'bn' ? 'মুশাফ' : 'Mushaf',
+                            text: language == 'bn' ? 'আরবি' : 'Arabic',
                             additionalStyle: TextStyle(
                               color: selectedIndex == 3
                                   ? colors.activeColor1
@@ -195,24 +204,15 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
                               fontSize: 10,
                             ),
                           ),
-                          // CustomText(
-                          //   text: language == 'bn' ? 'আরবি' : 'Arabic',
-                          //   additionalStyle: TextStyle(
-                          //     color: selectedIndex == 3
-                          //         ? colors.activeColor1
-                          //         : colors.txtColor,
-                          //     fontSize: 10,
-                          //   ),
-                          // ),
-                          // CustomText(
-                          //   text: language == 'bn' ? 'কোরআন' : 'Quran',
-                          //   additionalStyle: TextStyle(
-                          //     color: selectedIndex == 3
-                          //         ? colors.activeColor1
-                          //         : colors.txtColor,
-                          //     fontSize: 10,
-                          //   ),
-                          // ),
+                          CustomText(
+                            text: language == 'bn' ? 'কোরআন' : 'Quran',
+                            additionalStyle: TextStyle(
+                              color: selectedIndex == 3
+                                  ? colors.activeColor1
+                                  : colors.txtColor,
+                              fontSize: 10,
+                            ),
+                          ),
                         ],
                       ),
                     ],
