@@ -60,7 +60,7 @@ class _QuranBottomTabState extends State<QuranBottomTab> {
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: NavigationBar(
-          height: 55,
+          height: 70,
           backgroundColor: colors.bgColor1,
           elevation: 0,
           selectedIndex: selectedIndex,
