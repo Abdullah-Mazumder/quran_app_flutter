@@ -1,4 +1,6 @@
 // import 'package:al_quran/screenns/about_me.dart';
+
+import 'package:al_quran/screenns/features/features_home.dart';
 import 'package:al_quran/screenns/quran/downloaded_surah.dart';
 import 'package:al_quran/screenns/quran/quran_bottom_tab.dart';
 import 'package:al_quran/screenns/settings.dart';
@@ -116,6 +118,15 @@ class HomeScreen extends StatelessWidget {
                           Icons.download_for_offline,
                           color: colors.activeColor1,
                           size: 40,
+                        ),
+                      ),
+                      HomeTopic(
+                        title: language == 'bn' ? "ফিচারস" : "Features",
+                        nextScreen: const FeaturesHome(),
+                        icon: FaIcon(
+                          FontAwesomeIcons.icons,
+                          color: colors.activeColor1,
+                          size: 35,
                         ),
                       ),
                       // HomeTopic(

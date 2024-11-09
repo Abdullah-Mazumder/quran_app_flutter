@@ -22,7 +22,7 @@ class StyledCheckBox extends StatelessWidget {
       ),
       child: Checkbox(
         activeColor: colors.activeColor1,
-        onChanged: (newValue) => onChanged(),
+        onChanged: (newValue) => onChanged(newValue),
         value: value,
       ),
     );

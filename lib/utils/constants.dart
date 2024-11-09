@@ -32,6 +32,30 @@ String ayah_repeats = 'ayahRepeats';
 String playback_speed = 'playbackSpeed';
 String is_enable_word_meaning_audio = 'wordMeaningAudio';
 
+String fajr_start = 'fajrStart';
+String fajr_end = 'fajrEnd';
+String is_fajr_enabled = 'fajrEnabled';
+
+String juhr_start = 'juhrStart';
+String juhr_end = 'juhrEnd';
+String is_juhr_enabled = 'juhrEnabled';
+
+String asr_start = 'asrStart';
+String asr_end = 'asrEnd';
+String is_asr_enabled = 'asrEnabled';
+
+String maghrib_start = 'maghribStart';
+String maghrib_end = 'maghribEnd';
+String is_maghrib_enabled = 'maghribEnabled';
+
+String esa_start = 'esaStart';
+String esa_end = 'esaEnd';
+String is_esa_enabled = 'esaEnabled';
+
+String juma_start = 'jumaStart';
+String juma_end = 'jumaEnd';
+String is_juma_enabled = 'jumaEnabled';
+
 final List<DropdownItem> languages = [
   DropdownItem(value: "en", labelEn: "English", labelBn: "English"),
   DropdownItem(value: "bn", labelEn: "Bangla", labelBn: "বাংলা"),

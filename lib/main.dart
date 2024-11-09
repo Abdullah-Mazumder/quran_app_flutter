@@ -9,7 +9,7 @@ import 'package:al_quran/widgets/status_and_nav_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+void main() {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
