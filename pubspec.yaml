@@ -15,7 +15,7 @@ dependencies:
   font_awesome_flutter: ^10.7.0
   shared_preferences: ^2.2.2
   dropdown_button2: ^2.3.9
-  sqflite: ^2.3.2
+  sqflite: ^2.4.1
   path_provider: ^2.1.2
   path: ^1.8.3
   scrollable_positioned_list: ^0.3.8
