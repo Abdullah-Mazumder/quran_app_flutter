@@ -5,13 +5,17 @@ import android.app.PendingIntent
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.os.Build
+import androidx.annotation.RequiresApi
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import java.util.Calendar
 
 class MainActivity: FlutterActivity() {
     private  val channel = "com.abdullah.alQuran.com";
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
         MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
@@ -27,11 +31,32 @@ class MainActivity: FlutterActivity() {
                         requestDndPermission();
                     }
                 }
+                "enableJumaDndTask" -> {
+                    val hour = call.argument<Int>("hour")!!;
+                    val minute = call.argument<Int>("minute")!!;
+                    val uniqueId = call.argument<String>("uniqueId")!!;
+                    val prayer = call.argument<String>("prayer")!!;
+                    if (notificationManager.isNotificationPolicyAccessGranted) {
+                        enableJumaDndTask(hour, minute, uniqueId, prayer, result);
+                    } else {
+                        requestDndPermission();
+                    }
+                }
                 "disableDndTask" -> {
                     val endTime = call.argument<Long>("endTime")!!;
                     val uniqueId = call.argument<String>("uniqueId")!!;
                     if (notificationManager.isNotificationPolicyAccessGranted) {
                         disableDndTask(endTime, uniqueId, result);
+                    } else {
+                        requestDndPermission();
+                    }
+                }
+                "disableJumaDndTask" -> {
+                    val hour = call.argument<Int>("hour")!!;
+                    val minute = call.argument<Int>("minute")!!;
+                    val uniqueId = call.argument<String>("uniqueId")!!;
+                    if (notificationManager.isNotificationPolicyAccessGranted) {
+                        disableJumaDndTask(hour, minute, uniqueId, result);
                     } else {
                         requestDndPermission();
                     }
@@ -63,6 +88,42 @@ class MainActivity: FlutterActivity() {
         result.success(null);
     }
 
+    private fun enableJumaDndTask(hour: Int, minute: Int, prayer: String, uniqueId: String, result: MethodChannel.Result) {
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        if (calendar.timeInMillis < System.currentTimeMillis()) {
+            calendar.add(Calendar.WEEK_OF_YEAR, 1)
+        }
+
+        val intent = Intent(context, EnableDndReceiver::class.java).apply {
+            action = uniqueId
+            putExtra("prayer", prayer)
+        }
+        val requestCode = uniqueId.hashCode()
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setInexactRepeating(
+            AlarmManager.RTC_WAKEUP,
+            calendar.timeInMillis,
+            AlarmManager.INTERVAL_DAY * 7,
+            pendingIntent
+        )
+
+        result.success(null);
+    }
+
     private fun disableDndTask(time: Long, uniqueId: String, result: MethodChannel.Result) {
         val intent = Intent(context, DisableDndReceiver::class.java).apply {
             action = uniqueId
@@ -76,6 +137,35 @@ class MainActivity: FlutterActivity() {
         )
         val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, time, AlarmManager.INTERVAL_DAY, pendingIntent);
+
+        result.success(null);
+    }
+
+    private fun disableJumaDndTask(hour: Int, minute: Int, uniqueId: String, result: MethodChannel.Result) {
+        val calendar = Calendar.getInstance().apply {
+            timeInMillis = System.currentTimeMillis()
+            set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY)
+            set(Calendar.HOUR_OF_DAY, hour)
+            set(Calendar.MINUTE, minute)
+            set(Calendar.SECOND, 0)
+            set(Calendar.MILLISECOND, 0)
+        }
+        if (calendar.timeInMillis < System.currentTimeMillis()) {
+            calendar.add(Calendar.WEEK_OF_YEAR, 1)
+        }
+
+        val intent = Intent(context, DisableDndReceiver::class.java).apply {
+            action = uniqueId
+        }
+        val requestCode = uniqueId.hashCode()
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            requestCode,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, AlarmManager.INTERVAL_DAY * 7, pendingIntent);
 
         result.success(null);
     }

@@ -74,7 +74,7 @@ class DisableDndReceiver : BroadcastReceiver() {
 
         // Build the notification
         val builder = NotificationCompat.Builder(context, channelId)
-            .setSmallIcon(android.R.drawable.ic_lock_silent_mode) // Icon for the notification
+            .setSmallIcon(android.R.drawable.ic_lock_silent_mode_off) // Icon for the notification
             .setContentTitle("Do Not Disturb")
             .setContentText("DND mode has been diactivated!")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)

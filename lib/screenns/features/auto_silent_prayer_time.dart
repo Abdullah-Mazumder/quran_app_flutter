@@ -703,7 +703,7 @@ class AutoSilentPrayerTime extends StatelessWidget {
                         ),
                       ),
 
-                      // Esa Start
+                      // Juma Start
                       const SizedBox(height: 10),
                       Container(
                         padding: const EdgeInsets.fromLTRB(0, 3, 0, 2),
@@ -808,16 +808,19 @@ class AutoSilentPrayerTime extends StatelessWidget {
                                 if (newValue) {
                                   try {
                                     await platform
-                                        .invokeMethod('enableDndTask', {
-                                      'startTime': timeofday_to_mill(
-                                          prayerTimeProvider.jumaStart),
+                                        .invokeMethod('enableJumaDndTask', {
+                                      'hour': prayerTimeProvider.jumaStart.hour,
+                                      'minute':
+                                          prayerTimeProvider.jumaStart.minute,
                                       'uniqueId': 'jumaStart',
                                       'prayer': 'Juma'
                                     });
-                                    await platform.invokeMethod(
-                                        'disableDndTask', {
-                                      'endTime': timeofday_to_mill(
-                                          prayerTimeProvider.jumaEnd),
+
+                                    await platform
+                                        .invokeMethod('disableJumaDndTask', {
+                                      'hour': prayerTimeProvider.jumaEnd.hour,
+                                      'minute':
+                                          prayerTimeProvider.jumaEnd.minute,
                                       'uniqueId': 'jumaEnd'
                                     });
                                   } catch (_) {}
